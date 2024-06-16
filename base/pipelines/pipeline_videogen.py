@@ -648,6 +648,10 @@ class VideoGenPipeline(DiffusionPipeline):
                 latent_model_input = torch.cat([latents] * 2) if do_classifier_free_guidance else latents
                 latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
 
+                print(f"latent_model_input shape: {latent_model_input.shape}, dtype: {latent_model_input.dtype}")
+                print(f"prompt_embeds shape: {prompt_embeds.shape}, dtype: {prompt_embeds.dtype}")
+                print(f"t shape: {t.shape}, dtype: {t.dtype}")
+
                 # predict the noise residual
                 noise_pred = self.unet(
                     latent_model_input,
