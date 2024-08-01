@@ -654,9 +654,9 @@ class VideoGenPipeline(DiffusionPipeline):
 
                 # predict the noise residual
                 noise_pred = self.unet(
-                    latent_model_input,
-                    t,
-                    encoder_hidden_states=prompt_embeds,
+                    latent_model_input, #torch.Size([2, 4, 16, 40, 64])
+                    t, #int
+                    encoder_hidden_states=prompt_embeds, #torch.Size([2, 77, 768])
                     # cross_attention_kwargs=cross_attention_kwargs,
                 ).sample
 
